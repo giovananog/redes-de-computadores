@@ -116,3 +116,8 @@ Enquanto a camada de enlace movimenta quadros inteiros de um elemento da rede at
 Os protocolos nessa camada dependem também do enlace e além disso do próprio meio de transmissão do enlace.
 
 O Ethernet, por exemplo, tem muitos protocolos de camada física, um para fios de cobre trançado, outro para cabo coaxial, mais um para fibra e assim por diante. Em cada caso, o bit atravessa o enlace de um modo diferente.
+
+
+---
+
+encapsulamento

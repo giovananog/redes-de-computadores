@@ -71,3 +71,48 @@ Se os pacotes são transmitidos seguindo a estratégia de 'o primeiro a chegar s
 ### Atraso de Propagação
 
 Assim que é lançado no enlace, um bit precisa se propagar até o roteador B. O tempo necessário para propagar o bit desde o início do enlace até o roteador B é o atraso de propagação. O atraso de propagação é a distância entre dois roteadores dividida pela velocidade de propagação.
+
+
+---
+
+## Arquiteturas de Camadas
+
+### Camada de Aplicação
+
+A pilha de protocolos da internet é formada por cinco camadas: física, de enlace, de rede, de transporte e de aplicação.
+
+#### Camada de Aplicação
+
+Residem aplicações de rede e seus protocolos. A camada de aplicação da internet inclui muitos protocolos, tais como HTTP, SMTP e o FTP. Um protocolo de camada de aplicação é distribuído por diversos sistemas finais, e a aplicação em um sistema final utiliza o protocolo para trocar pacotes de informação (mensagens) com a aplicação em outro sistema final.
+
+#### Camada de Transporte
+
+Carrega mensagens da camada de aplicação entre os lados do cliente e servidor de uma aplicação. Há dois protocolos de transporte na internet: TCP e UDP, e qualquer um pode levar mensagens da camada de aplicação.
+
+O TCP fornece serviços orientados à conexão para suas aplicações. Alguns desses serviços são a entrega garantida de mensagens da camada de aplicação ao destino e controle de fluxo. O TCP também fragmenta mensagens longas em segmentos mais curtos e fornece mecanismos de controle de congestionamento, de modo que uma origem reduza sua velocidade de transmissão quando a rede está congestionada.
+
+O protocolo UDP fornece serviço não orientado à conexão para suas aplicações. É um serviço econômico que não oferece confiabilidade, nem controle de fluxo ou de congestionamento.
+
+#### Camada de Rede
+
+É responsável pela movimentação, de um hospedeiro para outro, de pacotes da camada de rede, conhecidos como datagramas. O protocolo de camada de transporte da internet (TCP ou UDP) em um hospedeiro de origem passa um segmento da camada de transporte e um endereço de destino à camada de rede.
+A camada de rede, então, fornece o serviço de entrega do segmento à camada de transporte no hospedeiro de destino.
+
+Essa camada inclui o protocolo IP, que define os campos no datagrama e o modo como os sistemas finais e os roteadores agem nesses campos. Existe apenas um único protocolo IP, e todos os componentes da internet que têm uma camada de rede devem executá-lo.
+
+#### Camada de Enlace
+
+Para levar um pacote de um nó (hospedeiro ou roteador) ao nó seguinte na rota, a camada de rede depende dos serviços da camada de enlace. Em cada nó, a camada de rede passa o datagrama para a camada de enlace, que o encaminha, ao longo da rota, ao nó seguinte, no qual o datagrama é passado da camada de enlace para a de rede.
+
+Os serviços prestados pela camada de enlace dependem do protocolo específico empregado no enlace.
+
+Exemplos de protocolos de camadas de enlace são Ethernet, Wi-Fi e o protocolo DOCSIS da rede de acesso por cabeamento.
+Pacotes de camada de enlace = quadros.
+
+#### Camada Física
+
+Enquanto a camada de enlace movimenta quadros inteiros de um elemento da rede até um elemento adjacente, a função da camada física é movimentar os bits individuais que estão dentro do quadro de um nó para o seguinte.
+
+Os protocolos nessa camada dependem também do enlace e além disso do próprio meio de transmissão do enlace.
+
+O Ethernet, por exemplo, tem muitos protocolos de camada física, um para fios de cobre trançado, outro para cabo coaxial, mais um para fibra e assim por diante. Em cada caso, o bit atravessa o enlace de um modo diferente.

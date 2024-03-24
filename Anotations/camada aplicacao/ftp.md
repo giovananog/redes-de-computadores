@@ -1,0 +1,34 @@
+
+TRANSFERÊNCIA DE ARQUIVO: FTP
+
+
+Em uma sessão FTP típica, o usuário, sentado à frente de um hospedeiro (o local), quer transferir arquivos de
+ou para um hospedeiro remoto. Para acessar a conta remota, o usuário deve fornecer uma identifcação e uma senha.
+Após fornecer essas informações de autorização, pode transferir arquivos do sistema local de arquivos para o sistema
+remoto e vice-versa.
+
+o usuário interage com o FTP por meio de um agente de usuário
+FTP. Primeiro, ele fornece o nome do hospedeiro remoto, o que faz com que o processo cliente FTP do hospedeiro
+local estabeleça uma conexão TCP com o processo servidor FTP do hospedeiro remoto. O usuário então fornece sua
+identifcação e senha, que são enviadas pela conexão TCP como parte dos comandos FTP. Assim que autorizado pelo
+servidor, o usuário copia um ou mais arquivos armazenados no sistema de arquivo local para o sistema de arquivo
+remoto (ou vice-versa).
+
+
+HTTP e FTP são protocolos de transferência de arquivos e têm muitas características em comum; por
+exemplo, ambos utilizam o TCP. Contudo, esses dois protocolos de camada de aplicação têm algumas diferenças importantes. A mais notável é que o FTP usa duas conexões TCP paralelas para transferir um arquivo: uma
+conexão de controle e uma conexão de dados. A primeira é usada para enviar informações de controle entre os
+dois hospedeiros — como identifcação de usuário, senha, comandos para trocar diretório remoto e comandos de
+“enviar” (put) e “receber” (get) arquivos. A conexão de dados é a usada para enviar de fato um arquivo. Como o
+FTP usa uma conexão de controle separada, dizemos que ele envia suas informações de controle fora da banda.
+O HTTP, como você deve recordar, envia linhas de cabeçalho de requisição e de resposta pela mesma conexão
+TCP que carrega o próprio arquivo transferido. Por essa razão, dizemos que o HTTP envia suas informações de
+controle na banda. 
+
+
+Durante uma sessão, o servidor FTP deve manter informações de estado sobre o usuário. Em particular, o
+servidor deve associar a conexão de controle com uma conta de usuário específca e também deve monitorar o
+diretório corrente do usuário enquanto este passeia pela árvore do diretório remoto. Monitorar essas informações
+de estado para cada sessão de usuário em curso limita de modo signifcativo o número total de sessões que o FTP
+pode manter simultaneamente. Lembre-se de que o HTTP, por outro lado, é sem estado — não tem de monitorar
+o estado de nenhum usuário.

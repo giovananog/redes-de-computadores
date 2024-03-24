@@ -117,7 +117,3 @@ Os protocolos nessa camada dependem também do enlace e além disso do próprio 
 
 O Ethernet, por exemplo, tem muitos protocolos de camada física, um para fios de cobre trançado, outro para cabo coaxial, mais um para fibra e assim por diante. Em cada caso, o bit atravessa o enlace de um modo diferente.
 
-
----
-
-encapsulamento

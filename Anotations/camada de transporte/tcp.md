@@ -51,6 +51,24 @@ O número de sequência para um segmento é o número do primeiro byte do segmen
 
 O número de reconhecimento que o hospedeiro A atribui a seu segmento é o número de sequência do próximo byte que ele estiver aguardando do hospedeiro B. É bom examinarmos alguns exemplos para entendermos o que está acontecendo aqui. Suponha que o hospedeiro A tenha recebido do hospedeiro B todos os bytes numerados de 0 a 535 e também que esteja prestes a enviar um segmento ao hospedeiro B. O hospedeiro A está esperando pelo byte 536 e por todos os bytes subsequentes da cadeia de dados do hospedeiro B. Assim, ele coloca o número 536 no campo de número de reconhecimento do segmento que envia para o hospedeiro B.
 
+
 ## Controle de Fluxo
 
 O TCP provê um serviço de controle de fluxo às suas aplicações, para eliminar a possibilidade de o remetente estourar o buffer do destinatário. Assim, controle de fluxo é um serviço de compatibilização de velocidades — compatibiliza a taxa à qual o remetente está enviando com aquela à qual a aplicação receptora está lendo.
+
+O TCP oferece serviço de controle de fluxo fazendo que o remetente mantenha uma variável denominada janela de recepção. De modo informal, a janela de recepção é usada para dar ao remetente uma ideia do espaço de buffer livre disponível no destinatário. Como o TCP é full-duplex, o remetente de cada lado da conexão mantém uma janela de recepção distinta.
+
+Suponha que o hospedeiro A esteja enviando um arquivo grande ao hospedeiro B por uma conexão TCP. O hospedeiro B aloca um buffer de recepção a essa conexão; denominemos seu tamanho RcvBuffer. De tempos em tempos, o processo de aplicação no hospedeiro B faz a leitura do buffer. São definidas as seguintes variáveis:
+
+- LastByteRead: número do último byte na cadeia de dados lido do buffer pelo processo de aplicação em B.
+- LastByteRcvd: número do último byte na cadeia de dados que chegou da rede e foi colocado no buffer de recepção de B.
+
+Como o TCP não tem permissão para saturar o buffer alocado, devemos ter:
+
+LastByteRcvd – LastByteRead ≤ RcvBuffer
+
+A janela de recepção, denominada rwnd, é ajustada para a quantidade de espaço disponível no buffer:
+
+rwnd = RcvBuffer – [LastByteRcvd – LastByteRead]
+
+Como o espaço disponível muda com o tempo, rwnd é dinâmica.

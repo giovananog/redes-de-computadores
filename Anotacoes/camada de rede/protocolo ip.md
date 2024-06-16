@@ -30,6 +30,12 @@ Um pacote de camada de rede é denominado **datagrama**. O formato do datagrama 
 
 ## Endereçamento IPv4
 
+Um hospedeiro geralmente possui um único enlace com a rede, e o IP envia datagramas por meio desse enlace. A fronteira entre o hospedeiro e o enlace físico é chamada de interface.
+
+Um roteador, por outro lado, conecta-se a dois ou mais enlaces, recebendo datagramas de um enlace e repassando-os a outro. Cada conexão de um roteador é uma interface. 
+
+Cada interface, tanto em hospedeiros quanto em roteadores, deve ter seu próprio endereço IP. Portanto, um endereço IP é associado a uma interface específica, não ao hospedeiro ou roteador em si.
+
 Cada endereço IP tem comprimento de 32 bits (4 bytes), resultando em um total de 2³² endereços possíveis, cerca de 4 bilhões. Esses endereços são escritos em notação decimal separada por pontos. Por exemplo, o endereço IP 193.32.216.9 em notação binária é: `11000001 00100000 11011000 00001001`.
 
 ### Interfaces e Sub-redes
